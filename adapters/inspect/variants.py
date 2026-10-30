@@ -95,6 +95,7 @@ def docker_run_flags() -> list[str]:
         f"--pids-limit={svc['pids_limit']}",
         f"--ulimit=fsize={svc['ulimits']['fsize']}",
     ]
+    flags += [f"--volume={v}" for v in svc.get("volumes", [])]
     return flags
 
 
